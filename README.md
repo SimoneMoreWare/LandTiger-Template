@@ -481,6 +481,34 @@ The assembly code you provided contains several functions written in ARM assembl
 
 15. **`value_is_in_a_range`**: This function checks if a given value is within a specified range. It compares the value with the minimum and maximum values and returns 1 if the value is within the range, otherwise returns 0.
 
+16. **`brianKernighan`**:
+   - **Description**: This function counts the number of bits set to 1 in a given integer using Brian Kernighan's algorithm.
+   - **Usage**: The number to process is passed in `r0`, and the result (count of 1 bits) is returned in `r0`.
+
+17. **`isPrime`**:
+   - **Description**: Checks if a given number is prime using a linear algorithm. It iteratively tests divisibility of the number by all integers greater than 1 and less than the number itself.
+   - **Usage**: The number to check is passed in `r0`, and `1` is returned if prime, or `0` if not.
+
+18. **`calc_mod`**:
+   - **Description**: Performs the modulo operation `r1 % r2` using ARM's `udiv` (unsigned division) and `mls` (multiply and subtract) instructions.
+   - **Usage**: The dividend is passed in `r1`, and the divisor in `r2`. The result of the modulo operation is returned in `r0`.
+
+19. **`check_lowerCase`**:
+   - **Description**: Checks if a given character (in `r0`) is a lowercase letter (between `'a'` and `'z'`).
+   - **Usage**: The character to check is passed in `r0`, and `1` is returned if lowercase, or `0` if not.
+
+20. **`check_upperCase`**:
+   - **Description**: Checks if a given character (in `r0`) is an uppercase letter (between `'A'` and `'Z'`).
+   - **Usage**: The character to check is passed in `r0`, and `1` is returned if uppercase, or `0` if not.
+
+21. **`do_2_complement`**:
+   - **Description**: Computes the two's complement of a 32-bit number. This is done by flipping the bits and adding 1 to the result.
+   - **Usage**: The number to convert is passed in `r0`, and the result is returned in `r0`.
+
+22. **`do_2_complement_64`**:
+   - **Description**: Computes the two's complement of a 64-bit number. It works on the upper 32 bits (`r0`) and the lower 32 bits (`r1`), performing the operation separately for both parts.
+   - **Usage**: The upper 32 bits are passed in `r0` and the lower 32 bits in `r1`. The result is returned with the upper 32 bits in `r0` and the lower 32 bits in `r1`.
+
 ### Key Points:
 - **Register Usage**: The functions extensively use ARM registers (`R0`, `R1`, `R2`, etc.) to pass arguments and return values. `R0` is commonly used for return values, while other registers (`R1`, `R2`, etc.) hold parameters or intermediate results.
 - **Stack Management**: Each function starts by saving the registers that will be used to avoid overwriting their values (using `STMFD sp!, {...}`). After the function completes, it restores the registers using `LDMFD sp!, {...}`.
