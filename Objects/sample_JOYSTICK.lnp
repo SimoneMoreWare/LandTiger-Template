@@ -1,0 +1,20 @@
+--cpu Cortex-M3
+".\objects\startup_lpc17xx.o"
+".\objects\sample.o"
+".\objects\functions.o"
+".\objects\utils.o"
+".\objects\system_lpc17xx.o"
+".\objects\funct_led.o"
+".\objects\lib_led.o"
+".\objects\irq_button.o"
+".\objects\lib_button.o"
+".\objects\irq_rit.o"
+".\objects\lib_rit.o"
+".\objects\lib_joystick.o"
+".\objects\asm_functs.o"
+".\objects\irq_timer.o"
+".\objects\lib_timer.o"
+--strict --scatter ".\Objects\sample_JOYSTICK.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\sample_JOYSTICK.map" -o .\Objects\sample_JOYSTICK.axf

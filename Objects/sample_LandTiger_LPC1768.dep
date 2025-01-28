@@ -1,0 +1,61 @@
+Dependencies for Project 'sample', Target 'LandTiger_LPC1768': (DO NOT MODIFY !)
+CompilerVersion: 6220000::V6.22::ARMCLANG
+F (.\Source\startup_LPC17xx.s)(0x4CCAADFA)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --diag_suppress=A1950W -I .\Source\button_EXINT -I .\Source\CMSIS_core -I .\Source\joystick -I .\Source\led -I .\Source\RIT -I .\Source\timer -I .\Source-I.\RTE\_LandTiger_LPC1768-ID:\programmi\Arm\ARM\CMSIS\6.1.0\CMSIS\Core\Include-ID:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include--pd "__UVISION_VERSION SETA 540"--pd "LPC175x_6x SETA 1"--pd "_RTE_ SETA 1"--list .\listings\startup_lpc17xx.lst--xref -o .\objects\startup_lpc17xx.o--depend .\objects\startup_lpc17xx.d)
+F (.\Source\sample.c)(0x670E28BA)(-xc -std=c90 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -fno-function-sections -I ./Source/button_EXINT -I ./Source/CMSIS_core -I ./Source/joystick -I ./Source/led -I ./Source/RIT -I ./Source/timer -I ./Source-I./RTE/_LandTiger_LPC1768-ID:/programmi/Arm/ARM/CMSIS/6.1.0/CMSIS/Core/Include-ID:/programmi/Arm/Keil/LPC1700_DFP/2.7.1/Device/Include-D__UVISION_VERSION="540" -DLPC175x_6x -D_RTE_-o ./objects/sample.o -MMD)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\LPC17xx.h)(0x5E1DC4B4)
+I (Source\CMSIS_core\core_cm3.h)(0x626FAD4E)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\system_LPC17xx.h)(0x58493F92)
+I (Source\led\led.h)(0x54294EB4)
+I (Source\button_EXINT\button.h)(0x5A36980A)
+I (Source\timer\timer.h)(0x5C18CB60)
+I (Source\RIT\RIT.h)(0x5C18CD48)
+I (Source\joystick\joystick.h)(0x5FD8C514)
+F (.\Source\system_LPC17xx.c)(0x5FCA5FF7)(-xc -std=c90 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -fno-function-sections -I ./Source/button_EXINT -I ./Source/CMSIS_core -I ./Source/joystick -I ./Source/led -I ./Source/RIT -I ./Source/timer -I ./Source-I./RTE/_LandTiger_LPC1768-ID:/programmi/Arm/ARM/CMSIS/6.1.0/CMSIS/Core/Include-ID:/programmi/Arm/Keil/LPC1700_DFP/2.7.1/Device/Include-D__UVISION_VERSION="540" -DLPC175x_6x -D_RTE_-o ./objects/system_lpc17xx.o -MMD)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\LPC17xx.h)(0x5E1DC4B4)
+I (Source\CMSIS_core\core_cm3.h)(0x626FAD4E)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\system_LPC17xx.h)(0x58493F92)
+F (.\Source\led\funct_led.c)(0x66F2965B)(-xc -std=c90 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -fno-function-sections -I ./Source/button_EXINT -I ./Source/CMSIS_core -I ./Source/joystick -I ./Source/led -I ./Source/RIT -I ./Source/timer -I ./Source-I./RTE/_LandTiger_LPC1768-ID:/programmi/Arm/ARM/CMSIS/6.1.0/CMSIS/Core/Include-ID:/programmi/Arm/Keil/LPC1700_DFP/2.7.1/Device/Include-D__UVISION_VERSION="540" -DLPC175x_6x -D_RTE_-o ./objects/funct_led.o -MMD)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\LPC17xx.h)(0x5E1DC4B4)
+I (Source\CMSIS_core\core_cm3.h)(0x626FAD4E)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\system_LPC17xx.h)(0x58493F92)
+I (Source\led\led.h)(0x54294EB4)
+F (.\Source\led\lib_led.c)(0x66F2964F)(-xc -std=c90 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -fno-function-sections -I ./Source/button_EXINT -I ./Source/CMSIS_core -I ./Source/joystick -I ./Source/led -I ./Source/RIT -I ./Source/timer -I ./Source-I./RTE/_LandTiger_LPC1768-ID:/programmi/Arm/ARM/CMSIS/6.1.0/CMSIS/Core/Include-ID:/programmi/Arm/Keil/LPC1700_DFP/2.7.1/Device/Include-D__UVISION_VERSION="540" -DLPC175x_6x -D_RTE_-o ./objects/lib_led.o -MMD)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\LPC17xx.h)(0x5E1DC4B4)
+I (Source\CMSIS_core\core_cm3.h)(0x626FAD4E)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\system_LPC17xx.h)(0x58493F92)
+I (Source\led\led.h)(0x54294EB4)
+F (.\Source\led\led.h)(0x54294EB4)()
+F (.\Source\button_EXINT\button.h)(0x5A36980A)()
+F (.\Source\button_EXINT\IRQ_button.c)(0x66F29649)(-xc -std=c90 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -fno-function-sections -I ./Source/button_EXINT -I ./Source/CMSIS_core -I ./Source/joystick -I ./Source/led -I ./Source/RIT -I ./Source/timer -I ./Source-I./RTE/_LandTiger_LPC1768-ID:/programmi/Arm/ARM/CMSIS/6.1.0/CMSIS/Core/Include-ID:/programmi/Arm/Keil/LPC1700_DFP/2.7.1/Device/Include-D__UVISION_VERSION="540" -DLPC175x_6x -D_RTE_-o ./objects/irq_button.o -MMD)
+I (Source\button_EXINT\button.h)(0x5A36980A)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\LPC17xx.h)(0x5E1DC4B4)
+I (Source\CMSIS_core\core_cm3.h)(0x626FAD4E)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\system_LPC17xx.h)(0x58493F92)
+F (.\Source\button_EXINT\lib_button.c)(0x66F29641)(-xc -std=c90 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -fno-function-sections -I ./Source/button_EXINT -I ./Source/CMSIS_core -I ./Source/joystick -I ./Source/led -I ./Source/RIT -I ./Source/timer -I ./Source-I./RTE/_LandTiger_LPC1768-ID:/programmi/Arm/ARM/CMSIS/6.1.0/CMSIS/Core/Include-ID:/programmi/Arm/Keil/LPC1700_DFP/2.7.1/Device/Include-D__UVISION_VERSION="540" -DLPC175x_6x -D_RTE_-o ./objects/lib_button.o -MMD)
+I (Source\button_EXINT\button.h)(0x5A36980A)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\LPC17xx.h)(0x5E1DC4B4)
+I (Source\CMSIS_core\core_cm3.h)(0x626FAD4E)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\system_LPC17xx.h)(0x58493F92)
+F (.\Source\RIT\IRQ_RIT.c)(0x66F2963C)(-xc -std=c90 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -fno-function-sections -I ./Source/button_EXINT -I ./Source/CMSIS_core -I ./Source/joystick -I ./Source/led -I ./Source/RIT -I ./Source/timer -I ./Source-I./RTE/_LandTiger_LPC1768-ID:/programmi/Arm/ARM/CMSIS/6.1.0/CMSIS/Core/Include-ID:/programmi/Arm/Keil/LPC1700_DFP/2.7.1/Device/Include-D__UVISION_VERSION="540" -DLPC175x_6x -D_RTE_-o ./objects/irq_rit.o -MMD)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\LPC17xx.h)(0x5E1DC4B4)
+I (Source\CMSIS_core\core_cm3.h)(0x626FAD4E)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\system_LPC17xx.h)(0x58493F92)
+I (Source\RIT\RIT.h)(0x5C18CD48)
+I (Source\RIT\..\led\led.h)(0x54294EB4)
+F (.\Source\RIT\lib_RIT.c)(0x66F29635)(-xc -std=c90 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -fno-function-sections -I ./Source/button_EXINT -I ./Source/CMSIS_core -I ./Source/joystick -I ./Source/led -I ./Source/RIT -I ./Source/timer -I ./Source-I./RTE/_LandTiger_LPC1768-ID:/programmi/Arm/ARM/CMSIS/6.1.0/CMSIS/Core/Include-ID:/programmi/Arm/Keil/LPC1700_DFP/2.7.1/Device/Include-D__UVISION_VERSION="540" -DLPC175x_6x -D_RTE_-o ./objects/lib_rit.o -MMD)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\LPC17xx.h)(0x5E1DC4B4)
+I (Source\CMSIS_core\core_cm3.h)(0x626FAD4E)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\system_LPC17xx.h)(0x58493F92)
+I (Source\RIT\RIT.h)(0x5C18CD48)
+F (.\Source\RIT\RIT.h)(0x5C18CD48)()
+F (.\Source\joystick\joystick.h)(0x5FD8C514)()
+F (.\Source\joystick\lib_joystick.c)(0x66F2962E)(-xc -std=c90 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -fno-function-sections -I ./Source/button_EXINT -I ./Source/CMSIS_core -I ./Source/joystick -I ./Source/led -I ./Source/RIT -I ./Source/timer -I ./Source-I./RTE/_LandTiger_LPC1768-ID:/programmi/Arm/ARM/CMSIS/6.1.0/CMSIS/Core/Include-ID:/programmi/Arm/Keil/LPC1700_DFP/2.7.1/Device/Include-D__UVISION_VERSION="540" -DLPC175x_6x -D_RTE_-o ./objects/lib_joystick.o -MMD)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\LPC17xx.h)(0x5E1DC4B4)
+I (Source\CMSIS_core\core_cm3.h)(0x626FAD4E)
+I (D:\programmi\Arm\Keil\LPC1700_DFP\2.7.1\Device\Include\system_LPC17xx.h)(0x58493F92)
+I (Source\joystick\joystick.h)(0x5FD8C514)
+F (.\Source\CMSIS_core\cmsis_armclang.h)(0x626FAD4E)()
+F (.\Source\CMSIS_core\cmsis_compiler.h)(0x626FAD4E)()
+F (.\Source\CMSIS_core\cmsis_version.h)(0x626FAD4E)()
+F (.\Source\CMSIS_core\core_cm3.h)(0x626FAD4E)()
+F (.\Source\CMSIS_core\mpu_armv7.h)(0x626FAD4E)()
