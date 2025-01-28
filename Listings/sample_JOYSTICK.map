@@ -18,7 +18,6 @@ Section Cross References
     startup_lpc17xx.o(.text) refers to startup_lpc17xx.o(HEAP) for Heap_Mem
     startup_lpc17xx.o(.text) refers to startup_lpc17xx.o(STACK) for Stack_Mem
     sample.o(.text) refers to system_lpc17xx.o(.text) for SystemInit
-    sample.o(.text) refers to lib_joystick.o(.text) for joystick_init
     sample.o(.text) refers to lib_rit.o(.text) for init_RIT
     sample.o(.ARM.exidx) refers to sample.o(.text) for [Anonymous Symbol]
     functions.o(.text) refers to funct_led.o(.text) for LED_Out
@@ -198,13 +197,14 @@ Removing Unused input sections from the image.
     Removing irq_rit.o(.ARM.exidx), (8 bytes).
     Removing irq_rit.o(.rodata.long_press_count_1), (4 bytes).
     Removing lib_rit.o(.ARM.exidx), (40 bytes).
+    Removing lib_joystick.o(.text), (98 bytes).
     Removing lib_joystick.o(.ARM.exidx), (8 bytes).
-    Removing asm_functs.o(asm_functions), (516 bytes).
+    Removing asm_functs.o(asm_functions), (704 bytes).
     Removing irq_timer.o(.ARM.exidx), (32 bytes).
     Removing lib_timer.o(.text), (770 bytes).
     Removing lib_timer.o(.ARM.exidx), (80 bytes).
 
-23 unused section(s) (total 2331 bytes) removed from the image.
+24 unused section(s) (total 2617 bytes) removed from the image.
 
 ==============================================================================
 
@@ -337,20 +337,19 @@ Image Symbol Table
     .ARM.Collect$$rtexit$$00000004           0x0000018c   Section        6  rtexit2.o(.ARM.Collect$$rtexit$$00000004)
     .text                                    0x00000194   Section       52  startup_lpc17xx.o(.text)
     [Anonymous Symbol]                       0x000001c8   Section        0  sample.o(.text)
-    [Anonymous Symbol]                       0x000001fc   Section        0  irq_button.o(.text)
-    .text                                    0x000002c8   Section        0  heapauxi.o(.text)
-    .text                                    0x000002ce   Section        0  exit.o(.text)
-    .text                                    0x000002e0   Section        8  libspace.o(.text)
-    .text                                    0x000002e8   Section        0  sys_exit.o(.text)
-    .text                                    0x000002f4   Section        2  use_no_semi.o(.text)
-    .text                                    0x000002f6   Section        0  indicate_semi.o(.text)
+    [Anonymous Symbol]                       0x000001f4   Section        0  irq_button.o(.text)
+    .text                                    0x000002c0   Section        0  heapauxi.o(.text)
+    .text                                    0x000002c6   Section        0  exit.o(.text)
+    .text                                    0x000002d8   Section        8  libspace.o(.text)
+    .text                                    0x000002e0   Section        0  sys_exit.o(.text)
+    .text                                    0x000002ec   Section        2  use_no_semi.o(.text)
+    .text                                    0x000002ee   Section        0  indicate_semi.o(.text)
     .ARM.__at_0x02FC                         0x000002fc   Section        4  startup_lpc17xx.o(.ARM.__at_0x02FC)
     [Anonymous Symbol]                       0x00000300   Section        0  system_lpc17xx.o(.text)
     [Anonymous Symbol]                       0x00000454   Section        0  irq_rit.o(.text)
     [Anonymous Symbol]                       0x00000704   Section        0  lib_rit.o(.text)
-    [Anonymous Symbol]                       0x00000790   Section        0  lib_joystick.o(.text)
-    [Anonymous Symbol]                       0x000007f4   Section        0  irq_timer.o(.text)
-    .text                                    0x000008de   Section       74  sys_stackheap_outer.o(.text)
+    [Anonymous Symbol]                       0x00000790   Section        0  irq_timer.o(.text)
+    .text                                    0x0000087a   Section       74  sys_stackheap_outer.o(.text)
     Stack_Mem                                0x10000000   Data         512  startup_lpc17xx.o(STACK)
     STACK                                    0x10000000   Section      512  startup_lpc17xx.o(STACK)
     __initial_sp                             0x10000200   Data           0  startup_lpc17xx.o(STACK)
@@ -362,7 +361,7 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    BuildAttributes$$THM_ISAv4$P$D$K$B$S$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$~IW$USESV6$~STKCKD$USESV7$~SHL$OTIME$ROPI$EBA8$UX$STANDARDLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    BuildAttributes$$THM_ISAv4$P$D$K$B$S$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$~IW$USESV6$~STKCKD$USESV7$~SHL$OTIME$ROPI$EBA8$UX$STANDARDLIB$REQ8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
     __Vectors                                0x00000000   Data           4  startup_lpc17xx.o(RESET)
     __fp_init_empty                          0x00000000   Number         0  fpinit_empty.o ABSOLUTE
     __ARM_exceptions_init                     - Undefined Weak Reference
@@ -482,21 +481,21 @@ Image Symbol Table
     USB_IRQHandler                           0x000001ab   Thumb Code     0  startup_lpc17xx.o(.text)
     WDT_IRQHandler                           0x000001ab   Thumb Code     0  startup_lpc17xx.o(.text)
     __user_initial_stackheap                 0x000001ad   Thumb Code     0  startup_lpc17xx.o(.text)
-    main                                     0x000001c9   Thumb Code    52  sample.o(.text)
-    EINT0_IRQHandler                         0x000001fd   Thumb Code    68  irq_button.o(.text)
-    EINT1_IRQHandler                         0x00000241   Thumb Code    68  irq_button.o(.text)
-    EINT2_IRQHandler                         0x00000285   Thumb Code    68  irq_button.o(.text)
-    __use_two_region_memory                  0x000002c9   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_escrow$2region                 0x000002cb   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_expand$2region                 0x000002cd   Thumb Code     2  heapauxi.o(.text)
-    exit                                     0x000002cf   Thumb Code    18  exit.o(.text)
-    __user_libspace                          0x000002e1   Thumb Code     8  libspace.o(.text)
-    __user_perproc_libspace                  0x000002e1   Thumb Code     0  libspace.o(.text)
-    __user_perthread_libspace                0x000002e1   Thumb Code     0  libspace.o(.text)
-    _sys_exit                                0x000002e9   Thumb Code     8  sys_exit.o(.text)
-    __I$use$semihosting                      0x000002f5   Thumb Code     0  use_no_semi.o(.text)
-    __use_no_semihosting_swi                 0x000002f5   Thumb Code     2  use_no_semi.o(.text)
-    __semihosting_library_function           0x000002f7   Thumb Code     0  indicate_semi.o(.text)
+    main                                     0x000001c9   Thumb Code    44  sample.o(.text)
+    EINT0_IRQHandler                         0x000001f5   Thumb Code    68  irq_button.o(.text)
+    EINT1_IRQHandler                         0x00000239   Thumb Code    68  irq_button.o(.text)
+    EINT2_IRQHandler                         0x0000027d   Thumb Code    68  irq_button.o(.text)
+    __use_two_region_memory                  0x000002c1   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_escrow$2region                 0x000002c3   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_expand$2region                 0x000002c5   Thumb Code     2  heapauxi.o(.text)
+    exit                                     0x000002c7   Thumb Code    18  exit.o(.text)
+    __user_libspace                          0x000002d9   Thumb Code     8  libspace.o(.text)
+    __user_perproc_libspace                  0x000002d9   Thumb Code     0  libspace.o(.text)
+    __user_perthread_libspace                0x000002d9   Thumb Code     0  libspace.o(.text)
+    _sys_exit                                0x000002e1   Thumb Code     8  sys_exit.o(.text)
+    __I$use$semihosting                      0x000002ed   Thumb Code     0  use_no_semi.o(.text)
+    __use_no_semihosting_swi                 0x000002ed   Thumb Code     2  use_no_semi.o(.text)
+    __semihosting_library_function           0x000002ef   Thumb Code     0  indicate_semi.o(.text)
     SystemInit                               0x00000301   Thumb Code   324  system_lpc17xx.o(.text)
     RIT_IRQHandler                           0x00000455   Thumb Code   686  irq_rit.o(.text)
     enable_RIT                               0x00000705   Thumb Code    16  lib_rit.o(.text)
@@ -504,14 +503,13 @@ Image Symbol Table
     reset_RIT                                0x00000725   Thumb Code    12  lib_rit.o(.text)
     init_RIT                                 0x00000731   Thumb Code    82  lib_rit.o(.text)
     get_RIT_value                            0x00000785   Thumb Code    10  lib_rit.o(.text)
-    joystick_init                            0x00000791   Thumb Code    98  lib_joystick.o(.text)
-    TIMER0_IRQHandler                        0x000007f5   Thumb Code    58  irq_timer.o(.text)
-    TIMER1_IRQHandler                        0x00000831   Thumb Code    58  irq_timer.o(.text)
-    TIMER2_IRQHandler                        0x0000086d   Thumb Code    56  irq_timer.o(.text)
-    TIMER3_IRQHandler                        0x000008a5   Thumb Code    58  irq_timer.o(.text)
-    __user_setup_stackheap                   0x000008df   Thumb Code    74  sys_stackheap_outer.o(.text)
-    Region$$Table$$Base                      0x00000928   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00000958   Number         0  anon$$obj.o(Region$$Table)
+    TIMER0_IRQHandler                        0x00000791   Thumb Code    58  irq_timer.o(.text)
+    TIMER1_IRQHandler                        0x000007cd   Thumb Code    58  irq_timer.o(.text)
+    TIMER2_IRQHandler                        0x00000809   Thumb Code    56  irq_timer.o(.text)
+    TIMER3_IRQHandler                        0x00000841   Thumb Code    58  irq_timer.o(.text)
+    __user_setup_stackheap                   0x0000087b   Thumb Code    74  sys_stackheap_outer.o(.text)
+    Region$$Table$$Base                      0x000008c4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000008f4   Number         0  anon$$obj.o(Region$$Table)
     SystemFrequency                          0x2007c000   Data           4  system_lpc17xx.o(.data.SystemFrequency)
     __libspace_start                         0x2007c008   Data          96  libspace.o(.bss)
     J_click                                  0x2007c068   Data           4  irq_rit.o(.bss.J_click)
@@ -540,9 +538,9 @@ Memory Map of the image
 
   Image Entry point : 0x000000cd
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00000960, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00000900, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000958, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000008f4, Max: 0x00080000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -598,41 +596,39 @@ Memory Map of the image
     0x0000018c   0x0000018c   0x00000006   Code   RO          232    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x00000192   0x00000192   0x00000002   PAD
     0x00000194   0x00000194   0x00000034   Code   RO            5    .text               startup_lpc17xx.o
-    0x000001c8   0x000001c8   0x00000034   Code   RO           13    .text               sample.o
-    0x000001fc   0x000001fc   0x000000cc   Code   RO           58    .text               irq_button.o
-    0x000002c8   0x000002c8   0x00000006   Code   RO          132    .text               c_w.l(heapauxi.o)
-    0x000002ce   0x000002ce   0x00000012   Code   RO          169    .text               c_w.l(exit.o)
-    0x000002e0   0x000002e0   0x00000008   Code   RO          177    .text               c_w.l(libspace.o)
-    0x000002e8   0x000002e8   0x0000000c   Code   RO          240    .text               c_w.l(sys_exit.o)
-    0x000002f4   0x000002f4   0x00000002   Code   RO          255    .text               c_w.l(use_no_semi.o)
-    0x000002f6   0x000002f6   0x00000000   Code   RO          257    .text               c_w.l(indicate_semi.o)
-    0x000002f6   0x000002f6   0x00000006   PAD
+    0x000001c8   0x000001c8   0x0000002c   Code   RO           13    .text               sample.o
+    0x000001f4   0x000001f4   0x000000cc   Code   RO           58    .text               irq_button.o
+    0x000002c0   0x000002c0   0x00000006   Code   RO          132    .text               c_w.l(heapauxi.o)
+    0x000002c6   0x000002c6   0x00000012   Code   RO          169    .text               c_w.l(exit.o)
+    0x000002d8   0x000002d8   0x00000008   Code   RO          177    .text               c_w.l(libspace.o)
+    0x000002e0   0x000002e0   0x0000000c   Code   RO          240    .text               c_w.l(sys_exit.o)
+    0x000002ec   0x000002ec   0x00000002   Code   RO          255    .text               c_w.l(use_no_semi.o)
+    0x000002ee   0x000002ee   0x00000000   Code   RO          257    .text               c_w.l(indicate_semi.o)
+    0x000002ee   0x000002ee   0x0000000e   PAD
     0x000002fc   0x000002fc   0x00000004   Code   RO            4    .ARM.__at_0x02FC    startup_lpc17xx.o
     0x00000300   0x00000300   0x00000154   Code   RO           30    .text               system_lpc17xx.o
     0x00000454   0x00000454   0x000002ae   Code   RO           72    .text               irq_rit.o
     0x00000702   0x00000702   0x00000002   PAD
     0x00000704   0x00000704   0x0000008a   Code   RO           96    .text               lib_rit.o
     0x0000078e   0x0000078e   0x00000002   PAD
-    0x00000790   0x00000790   0x00000062   Code   RO          104    .text               lib_joystick.o
-    0x000007f2   0x000007f2   0x00000002   PAD
-    0x000007f4   0x000007f4   0x000000ea   Code   RO          115    .text               irq_timer.o
-    0x000008de   0x000008de   0x0000004a   Code   RO          167    .text               c_w.l(sys_stackheap_outer.o)
-    0x00000928   0x00000928   0x00000030   Data   RO          313    Region$$Table       anon$$obj.o
+    0x00000790   0x00000790   0x000000ea   Code   RO          115    .text               irq_timer.o
+    0x0000087a   0x0000087a   0x0000004a   Code   RO          167    .text               c_w.l(sys_stackheap_outer.o)
+    0x000008c4   0x000008c4   0x00000030   Data   RO          313    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x10000000, Load base: 0x00000958, Size: 0x00000200, Max: 0x00008000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x10000000, Load base: 0x000008f4, Size: 0x00000200, Max: 0x00008000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x10000000        -       0x00000200   Zero   RW            1    STACK               startup_lpc17xx.o
 
 
-    Execution Region RW_IRAM2 (Exec base: 0x2007c000, Load base: 0x00000958, Size: 0x000000a8, Max: 0x00008000, ABSOLUTE)
+    Execution Region RW_IRAM2 (Exec base: 0x2007c000, Load base: 0x000008f8, Size: 0x000000a8, Max: 0x00008000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x2007c000   0x00000958   0x00000004   Data   RW           32    .data.SystemFrequency  system_lpc17xx.o
-    0x2007c004   0x0000095c   0x00000004   PAD
+    0x2007c000   0x000008f8   0x00000004   Data   RW           32    .data.SystemFrequency  system_lpc17xx.o
+    0x2007c004   0x000008fc   0x00000004   PAD
     0x2007c008        -       0x00000060   Zero   RW          178    .bss                c_w.l(libspace.o)
     0x2007c068        -       0x00000004   Zero   RW           84    .bss.J_click        irq_rit.o
     0x2007c06c        -       0x00000004   Zero   RW           81    .bss.J_down         irq_rit.o
@@ -644,7 +640,7 @@ Memory Map of the image
     0x2007c084        -       0x00000004   Zero   RW           85    .bss.J_up_left      irq_rit.o
     0x2007c088        -       0x00000004   Zero   RW           86    .bss.J_up_right     irq_rit.o
     0x2007c08c        -       0x00000001   Zero   RW           33    .bss.ScaleFlag      system_lpc17xx.o
-    0x2007c08d   0x0000095c   0x00000003   PAD
+    0x2007c08d   0x000008fc   0x00000003   PAD
     0x2007c090        -       0x00000004   Zero   RW           74    .bss.down_0         irq_rit.o
     0x2007c094        -       0x00000004   Zero   RW           75    .bss.down_1         irq_rit.o
     0x2007c098        -       0x00000004   Zero   RW           76    .bss.down_2         irq_rit.o
@@ -661,19 +657,18 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       204          0          0          0          0       3977   irq_button.o
-       686          0          0          0         60       5286   irq_rit.o
-       234          0          0          0          0       1525   irq_timer.o
-        98          0          0          0          0       2510   lib_joystick.o
-       138          0          0          0          0       4194   lib_rit.o
-        52          0          0          0          0       1620   sample.o
-        56         22        204          0        512        988   startup_lpc17xx.o
-       340         20          0          4          1       2113   system_lpc17xx.o
+       204          0          0          0          0       3967   irq_button.o
+       686          0          0          0         60       5276   irq_rit.o
+       234          0          0          0          0       1515   irq_timer.o
+       138          0          0          0          0       4184   lib_rit.o
+        44          0          0          0          0       1606   sample.o
+        56         22        204          0        512       1060   startup_lpc17xx.o
+       340         20          0          4          1       2103   system_lpc17xx.o
 
     ----------------------------------------------------------------------
-      1814         42        252          4        580      22213   Object Totals
+      1706         42        252          4        580      19711   Object Totals
          0          0         48          0          0          0   (incl. Generated)
-         6          0          0          0          7          0   (incl. Padding)
+         4          0          0          0          7          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -701,8 +696,8 @@ Image component sizes
          2          0          0          0          0         68   use_no_semi.o
 
     ----------------------------------------------------------------------
-       326         16          0          0         96        584   Library Totals
-        12          0          0          0          0          0   (incl. Padding)
+       334         16          0          0         96        584   Library Totals
+        20          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -711,7 +706,7 @@ Image component sizes
        314         16          0          0         96        584   c_w.l
 
     ----------------------------------------------------------------------
-       326         16          0          0         96        584   Library Totals
+       334         16          0          0         96        584   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -720,15 +715,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      2140         58        252          4        676      22637   Grand Totals
-      2140         58        252          4        676      22637   ELF Image Totals
-      2140         58        252          4          0          0   ROM Totals
+      2040         58        252          4        676      20155   Grand Totals
+      2040         58        252          4        676      20155   ELF Image Totals
+      2040         58        252          4          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 2392 (   2.34kB)
+    Total RO  Size (Code + RO Data)                 2292 (   2.24kB)
     Total RW  Size (RW Data + ZI Data)               680 (   0.66kB)
-    Total ROM Size (Code + RO Data + RW Data)       2396 (   2.34kB)
+    Total ROM Size (Code + RO Data + RW Data)       2296 (   2.24kB)
 
 ==============================================================================
 
