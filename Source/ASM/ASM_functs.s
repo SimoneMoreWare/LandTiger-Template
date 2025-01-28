@@ -168,7 +168,158 @@ call_svc FUNCTION
 	; restore volatile registers
 	;LDMFD sp!,{pc}
 	ENDFUNC
+	
+	
+; COUNT BITS SET TO 1 (BRIAN KERNIGHAN)
+	EXPORT brianKernighan
+brianKernighan	FUNCTION
+				;r0: number 
+				stmfd sp!, {r4-r5, lr}
+				
+				mov r4, #0	;counter
+				
+ciclo			;check if the number is not zero
+				cmp r0, #0
+				beq endAlgo
+
+				;do n = n AND (n-1)
+				sub r5, r0, #1
+				and r0, r0, r5
+				;increment counter
+				add r4, r4, #1
+				b ciclo	
+	
+endAlgo			mov r0, r4	
+				ldmfd sp!, {r4-r5, pc}
+				ENDFUNC
 		
+		
+		
+; CHECK IF NUMBER IS PRIME (LINEAR ALGO)
+	EXPORT isPrime
+isPrime			FUNCTION
+				stmfd sp!, {r4-r8, r10-r11, lr}
+				
+				;r0: number to test wether it's prime or not
+				
+				cmp r0,#0
+				beq not_primep
+				cmp r0, #3
+				ble primep
+				
+				mov r1, r0		;original number
+				sub r2, r1, #1	;test number
+				;while test number > 1: perform original_number % test_number, it it's 0 -> prime
+				;if test_number reaches 1 -> not prime
+				;linear complexity
+				
+whilep			;check test_number > 1
+				cmp r2, #1
+				ble primep
+				
+				;perform r1 % r2
+				bl calc_mod
+				;result in r0
+				;if remainder == 0 -> not prime
+				cmp r0, #0
+				beq not_primep
+				
+				;test_number --
+				sub r2, r2, #1
+				;loop back
+				b whilep
+
+not_primep		mov r0, #0
+				ldmfd sp!, {r4-r8, r10-r11, pc}
+				
+primep			mov r0, #1
+				ldmfd sp!, {r4-r8, r10-r11, pc}
+				ENDFUNC
+					
+					
+;MODULO OPERATRION WITH MLS
+	EXPORT calc_mod
+calc_mod		FUNCTION
+				STMFD sp!,{r4-r8,r10-r11,lr}
+				;calculate r1 % r2
+				udiv r3, r1, r2 ;r3 = r1/r2
+				mls r0, r3, r2, r1
+				;result in r0
+				
+				LDMFD sp!,{r4-r8,r10-r11,pc}
+
+				ENDFUNC
+					
+					
+;CHECK IF LETTER IS LOWERCASE
+	EXPORT check_lowerCase
+check_lowerCase		FUNCTION
+				STMFD sp!,{r4-r8,r10-r11,lr}
+				
+				cmp r0, #'a'
+				blt nope
+				cmp r0, #'z'
+				bgt nope
+				
+				mov r0, #1
+				bx lr
+	
+
+nope			mov r0, #0
+				LDMFD sp!,{r4-r8,r10-r11,pc}
+				ENDFUNC
+
+;CHECK IF LETTER IS UPPERCASE
+	EXPORT check_upperCase
+check_upperCase		FUNCTION
+				STMFD sp!,{r4-r8,r10-r11,lr}
+				
+				cmp r0, #'A'
+				blt nope2
+				cmp r0, #'Z'
+				bgt nope2
+				
+				mov r0, #1
+				bx lr
+	
+
+nope2			mov r0, #0
+				LDMFD sp!,{r4-r8,r10-r11,pc}
+				ENDFUNC
+					
+;2's complement of a 32-bit number
+	EXPORT do_2_complement
+do_2_complement	FUNCTION
+				STMFD sp!,{r4-r8,r10-r11,lr}	
+				;number in r0
+				mvn r0, r0
+				add r0, r0, #1
+				LDMFD sp!,{r4-r8,r10-r11,pc}	
+				ENDFUNCTION
+					
+;2's complement of a 64-bit number in two registers
+do_2_complement_64	FUNCTION
+				STMFD sp!,{r4-r8,r10-r11,lr}
+				;r0 UPPER 32 BITS
+				;r1 LOWER 32 BITS
+
+				;two's complement of both upper and lower bits
+				mvn r0, r0
+				mvn r1, r1
+				;add 1 to the lower 32 bits
+				;if the lower 32 bits are all 1 -> overflow -> this means we're gonna add 1 to the ;upper 32 bits instead
+				adds r1, r1, #1
+				;check if overflow of lower 32 bits
+				bvc no_overflow	;no overflow
+				;overflow: propagate the sum of 1 to the upper 32 bits
+				add r0, r0, #1
+				
+				;RESULT IN R0 (UPPER BITS) AND R1 (LOWER BITS)
+no_overflow		LDMFD sp!,{r4-r8,r10-r11,pc}
+				ENDFUNC
+				
+					
+
 	EXPORT count_leading_zero
 count_leading_zero FUNCTION
 	MOV   r12, sp

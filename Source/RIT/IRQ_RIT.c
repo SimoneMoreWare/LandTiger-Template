@@ -159,12 +159,25 @@ void RIT_IRQHandler(void)
 				case 1:				
 					//short press
 					//your code	
+				
+				
+					//for just enabling up-left and not up-left + left + up without flags
+					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+					//return;					
 					break;
 				case long_press_count_1:
 					// your code here (for long press)
+				
+					//for just enabling up-left and not up-left + left + up without flags
+					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+					//return;	
 					break;
 				default:
 					// potential other code here
+				
+					//for just enabling up-left and not up-left + left + up without flags
+					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+					//return;	
 					break;
 			}
 		}
@@ -183,12 +196,24 @@ void RIT_IRQHandler(void)
 				case 1:				
 					//short press
 					//your code	
+				
+					//for just enabling up-right and not up-right + right + up without flags
+					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+					//return;	
 					break;
 				case long_press_count_1:
 					// your code here (for long press)
+				
+					//for just enabling up-right and not up-right + right + up without flags
+					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+					//return;	
 					break;
 				default:
 					// J_uppotential other code here
+				
+					//for just enabling up-right and not up-right + right + up without flags
+					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+					//return;	
 					break;
 			}
 		}
@@ -207,12 +232,27 @@ void RIT_IRQHandler(void)
 				case 1:				
 					//short press
 					//your code	
+				
+				
+				
+					//for just enabling down-left and not down-left + down + left without flags
+					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+					//return;	
 					break;
 				case long_press_count_1:
 					// your code here (for long press)
+				
+					//for just enabling down-left and not down-left + down + left without flags
+					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+					//return;
 					break;
 				default:
 					// potential other code here
+				
+				
+					//for just enabling down-left and not down-left + down + left without flags
+					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+					//return;
 					break;
 			}
 		}
@@ -231,12 +271,27 @@ void RIT_IRQHandler(void)
 				case 1:				
 					//short press
 					//your code	
+				
+				
+					//for just enabling down-right and not down-left + down + right without flags
+					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+					//return;
 					break;
 				case long_press_count_1:
 					// your code here (for long press)
+				
+				
+					//for just enabling down-right and not down-left + down + right without flags
+					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+					//return;
 					break;
 				default:
 					// potential other code here
+				
+				
+					//for just enabling down-right and not down-left + down + right without flags
+					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+					//return;
 					break;
 			}
 		}
