@@ -62,9 +62,6 @@ LandTiger_LPC1768
     ├── lib_timer.c                # Low-level timer library
     └── timer.h                    # Timer initialization and definitions
 ```
-
-Grazie per aver condiviso il codice. Ecco come potresti documentare queste funzioni nel README per una facile consultazione:
-
 ---
 
 ### Functions Available
