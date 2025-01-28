@@ -295,9 +295,10 @@ do_2_complement	FUNCTION
 				mvn r0, r0
 				add r0, r0, #1
 				LDMFD sp!,{r4-r8,r10-r11,pc}	
-				ENDFUNCTION
+				ENDFUNC
 					
 ;2's complement of a 64-bit number in two registers
+	EXPORT do_2_complement_64
 do_2_complement_64	FUNCTION
 				STMFD sp!,{r4-r8,r10-r11,lr}
 				;r0 UPPER 32 BITS
