@@ -24,6 +24,45 @@ Meaningful informations about the chip composition:
 - Power Management Unit and Wakeup Interrupt Controller
 The IDE used to develop this project is [Keil uVision](https://www2.keil.com/mdk5/uvision/).
 
+## Project Structure
+
+
+```
+LandTiger_LPC1768
+├── startup_file
+│   └── startup_LPC17xx.s          # Startup assembly file for LPC1768
+├── main
+│   ├── sample.c                   # Main example (system_init, button_init, etc.)
+│   ├── sample.h                   
+│   ├── function.c                 # Utility C functions (e.g., extract_bits)
+│   ├── function.h                 
+│   ├── utils.c                    # Additional exam-specific utilities
+│   └── utils.h                    
+├── lib_SoC_board
+│   └── system_LPC17xx.c           # SoC-level configuration (e.g., clock frequency)
+├── led
+│   ├── funct_led.c                # High-level LED control
+│   ├── lib_led.c                  # Low-level LED library
+│   └── led.h                      
+├── button_EINT
+│   ├── button.h                   # Button initialization and definitions
+│   ├── IRQ_button.c               # Button interrupt handlers
+│   └── lib_button.c               # Low-level button library
+├── RIT
+│   ├── irq_rit.c                  # Repetitive Interrupt Timer IRQ handler
+│   ├── lib_RIT.c                  # Low-level RIT library
+│   └── RIT.h                      
+├── joystick
+│   ├── joystick.h                 # Joystick initialization and definitions
+│   └── lib_joystick.c             # Low-level joystick library
+├── ASM
+│   └── AMS_funcs.s                # Useful Assembly functions
+└── timer
+    ├── IRQ_timer.c                # Timer interrupt handlers
+    ├── lib_timer.c                # Low-level timer library
+    └── timer.h                    # Timer initialization and definitions
+```
+
 ## Contacts
 Candido Simone: https://t.me/Simonecandido [https://t.me/Simonecandido]
 If you need help or want to know something more about all of this, we are ready and excited to help you!
