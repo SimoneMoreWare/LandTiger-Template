@@ -2,8 +2,8 @@
  * Name:    sample.c
  * Purpose: to control led through debounced buttons and Joystick
  *        	- key1 switches on the led at the left of the current led on, 
- *					- it implements a circular led effect,
- * 					- joystick UP function returns to initial configuration (led11 on) .
+ *		- it implements a circular led effect,
+ * 		- joystick UP function returns to initial configuration (led11 on) .
  * Note(s): this version supports the LANDTIGER Emulator
  * Author: 	Paolo BERNARDI - PoliTO - last modified 15/12/2020
  *----------------------------------------------------------------------------
@@ -40,26 +40,26 @@ int main (void) {
 	SystemInit();  													/* System Initialization (i.e., PLL)  */
 		
 	// LED
-  //LED_init();                           /* LED Initialization                 */
+  	//LED_init();                           /* LED Initialization                 */
 	
 	// Buttons
-  //BUTTON_init();												/* BUTTON Initialization              */
+  	//BUTTON_init();												/* BUTTON Initialization              */
 	
 	// Joystick
 	//joystick_init();
 	
 	// RIT
-	init_RIT(0x004C4B40); ///* RIT Initialization 50 msec       */
+	//init_RIT(0x004C4B40); ///* RIT Initialization 50 msec       */
 	//enable_RIT();
 	
 	//power_on_timer2(); 	// or LPC_SC -> PCONP |= (1 << 22);  // TURN ON TIMER 2
 	//power_on_timer3(); 	// or LPC_SC -> PCONP |= (1 << 23);  // TURN ON TIMER 3	
 	
 	//init_timer(TIMER0, 0, 0, CONTROL_INTERRUPT, 0x017D7840);							/* TIMER0 Initialization              */
-																																					/* K = T*Fr = [s]*[Hz] = [s]*[1/s]	  */
-																																					/* T = K / Fr = 0x017D7840 / 25MHz    */
-																																					/* T = K / Fr = 25000000 / 25MHz      */
-																																					/* T = 1s	(one second)   							*/	
+															/* K = T*Fr = [s]*[Hz] = [s]*[1/s]    */
+															/* T = K / Fr = 0x017D7840 / 25MHz    */
+															/* T = K / Fr = 25000000 / 25MHz      */
+															/* T = 1s	(one second)   	      */
 
 	/*
 		How to change the frequency of peripherals?
@@ -75,13 +75,14 @@ int main (void) {
 		Normally, for the timers, it's set to 25MHz, which is `CCLK/4`.  
 		To set it to 50MHz, just set it to `CCLK/2`.
 	*/
+	
 	//init_timer(TIMER2,0,0,CONTROL_RESET,0x7A120); //100Hz
 	//enable_timer(TIMER2);
 
-	LPC_SC->PCON |= 0x1;									/* power-down	mode										*/
+	LPC_SC->PCON |= 0x1;		/* power-down	mode */
 	LPC_SC->PCON &= 0xFFFFFFFFD;						
 		
-  while (1) {                           /* Loop forever                       */	
+  while (1) {                           /* Loop forever */	
 		__ASM("wfi");
   }
 
