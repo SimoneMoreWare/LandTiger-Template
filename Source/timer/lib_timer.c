@@ -26,14 +26,14 @@
 ******************************************************************************/
 void enable_timer( uint8_t timer_num )
 {
-  if ( timer_num == 0 )
-  {
+  	if ( timer_num == 0 )
+  	{
 		LPC_TIM0->TCR = 1;
-  }
-  else if (timer_num == 1)
-  {
+  	}
+  	else if (timer_num == 1)
+  	{
 		LPC_TIM1->TCR = 1;
-  }
+ 	}
 	else if (timer_num == 2)
 	{
 		LPC_TIM2->TCR = 1;
@@ -41,9 +41,8 @@ void enable_timer( uint8_t timer_num )
 	else if (timer_num == 3)
 	{
 		LPC_TIM3->TCR = 1;
-	}
-	
-  return;
+	}	
+  	return;
 }
 
 /******************************************************************************
@@ -63,14 +62,14 @@ void enable_timer( uint8_t timer_num )
 
 void disable_timer( uint8_t timer_num )
 {
-  if ( timer_num == 0 )
-  {
+  	if ( timer_num == 0 )
+  	{
 		LPC_TIM0->TCR = 0;
-  }
-  else if (timer_num == 1)
-  {
+  	}
+  	else if (timer_num == 1)
+  	{
 		LPC_TIM1->TCR = 0;
-  }
+  	}
 	else if (timer_num == 2)
 	{
 		LPC_TIM2->TCR = 0;
@@ -79,7 +78,7 @@ void disable_timer( uint8_t timer_num )
 	{
 		LPC_TIM3->TCR = 0;
 	}
-  return;
+  	return;
 }
 
 /******************************************************************************
@@ -102,20 +101,20 @@ void disable_timer( uint8_t timer_num )
 
 void reset_timer( uint8_t timer_num )
 {
-  uint32_t regVal;
+  	uint32_t regVal;
 
-  if ( timer_num == 0 )
-  {
+  	if ( timer_num == 0 )
+  	{
 		regVal = LPC_TIM0->TCR;
 		regVal |= 0x02;
 		LPC_TIM0->TCR = regVal;
-  }
-  else if (timer_num == 1)
-  {
+  	}
+  	else if (timer_num == 1)
+  	{
 		regVal = LPC_TIM1->TCR;
 		regVal |= 0x02;
 		LPC_TIM1->TCR = regVal;
-  }
+  	}
 	else if (timer_num == 2)
 	{
 		regVal = LPC_TIM2->TCR;
@@ -128,7 +127,7 @@ void reset_timer( uint8_t timer_num )
 		regVal |= 0x02;
 		LPC_TIM3->TCR = regVal;
 	}
-  return;
+  	return;
 }
 /******************************************************************************
 ** Function Name:      init_timer
@@ -181,8 +180,8 @@ void reset_timer( uint8_t timer_num )
 ******************************************************************************/
 uint32_t init_timer ( uint8_t timer_num, uint32_t Prescaler, uint8_t MatchReg, uint8_t SRImatchReg, uint32_t TimerInterval )
 {
-  if ( timer_num == 0 )
-  {
+  	if ( timer_num == 0 )
+  	{
 		LPC_TIM0-> PR = Prescaler;
 		
 		if (MatchReg == 0){
@@ -201,12 +200,12 @@ uint32_t init_timer ( uint8_t timer_num, uint32_t Prescaler, uint8_t MatchReg, u
 			LPC_TIM0->MR3 = TimerInterval;
 			LPC_TIM0->MCR |= SRImatchReg << 3*MatchReg;	
 		}
-	NVIC_EnableIRQ(TIMER0_IRQn);				/* enable timer interrupts*/
-	NVIC_SetPriority(TIMER0_IRQn, 0);		/* more priority than buttons */
-	return (0);
-  }
-  else if ( timer_num == 1 )
-  {
+		NVIC_EnableIRQ(TIMER0_IRQn);			/* enable timer interrupts    */
+		NVIC_SetPriority(TIMER0_IRQn, 0);		/* more priority than buttons */
+		return (0);
+  	}
+  	else if ( timer_num == 1 )
+  	{
 		LPC_TIM1-> PR = Prescaler;
 		
 		if (MatchReg == 0){
@@ -225,13 +224,13 @@ uint32_t init_timer ( uint8_t timer_num, uint32_t Prescaler, uint8_t MatchReg, u
 			LPC_TIM1->MR3 = TimerInterval;
 			LPC_TIM1->MCR |= SRImatchReg << 3*MatchReg;	
 		}		
-	NVIC_EnableIRQ(TIMER1_IRQn);
-	NVIC_SetPriority(TIMER1_IRQn, 0);	/* less priority than buttons and timer0*/
-	return (0);
-  }
-// TIMER 2
-	  else if ( timer_num == 2 )
-  {
+		NVIC_EnableIRQ(TIMER1_IRQn);
+		NVIC_SetPriority(TIMER1_IRQn, 0);	/* less priority than buttons and timer0*/
+		return (0);
+  	}
+	// TIMER 2
+	else if ( timer_num == 2 )
+  	{
 		LPC_TIM2-> PR = Prescaler;
 		
 		if (MatchReg == 0){
@@ -250,13 +249,13 @@ uint32_t init_timer ( uint8_t timer_num, uint32_t Prescaler, uint8_t MatchReg, u
 			LPC_TIM2->MR3 = TimerInterval;
 			LPC_TIM2->MCR |= SRImatchReg << 3*MatchReg;	
 		}		
-	NVIC_EnableIRQ(TIMER2_IRQn);
-	NVIC_SetPriority(TIMER2_IRQn, 0);	/* less priority than buttons and timer0*/
-	return (0);
-  }
-// TIMER 3
-	  else if ( timer_num == 3 )
-  {
+		NVIC_EnableIRQ(TIMER2_IRQn);
+		NVIC_SetPriority(TIMER2_IRQn, 0);	/* less priority than buttons and timer0*/
+		return (0);
+  	}
+	// TIMER 3
+	else if ( timer_num == 3 )
+  	{
 		LPC_TIM3-> PR = Prescaler;
 		
 		if (MatchReg == 0){
@@ -275,12 +274,11 @@ uint32_t init_timer ( uint8_t timer_num, uint32_t Prescaler, uint8_t MatchReg, u
 			LPC_TIM3->MR3 = TimerInterval;
 			LPC_TIM3->MCR |= SRImatchReg << 3*MatchReg;	
 		}		
-	NVIC_EnableIRQ(TIMER3_IRQn);
-	NVIC_SetPriority(TIMER3_IRQn, 0);	/* less priority than buttons and timer0*/
-	return (0);
-  }
-
-  return (1);
+		NVIC_EnableIRQ(TIMER3_IRQn);
+		NVIC_SetPriority(TIMER3_IRQn, 0);	/* less priority than buttons and timer0*/
+		return (0);
+  	}
+	return (1);
 }
 /******************************************************************************
 ** Function name:    toggle_timer
@@ -358,39 +356,40 @@ unsigned int get_timer_value(uint8_t timer_num) {
 }
 
 /******************************************************************************
-** Function name:    get_timer_value_in_sec
+** Function name:Â  Â  get_timer_value_in_sec
 **
-** Description:      Retrieves the current count value of the specified timer in seconds.
+** Description:Â  Â  Â  Retrieves the current count value of the specified timer in seconds.
 **
-** Parameters:       timer_num: The number of the timer to read. Valid values are:
-**                        0 - Reads the value of Timer 0 (LPC_TIM0)
-**                        1 - Reads the value of Timer 1 (LPC_TIM1)
-**                        2 - Reads the value of Timer 2 (LPC_TIM2)
-**                        3 - Reads the value of Timer 3 (LPC_TIM3)
+** Parameters:Â  Â  Â  Â timer_num: The number of the timer to read. Valid values are:
+**Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  0 - Reads the value of Timer 0 (LPC_TIM0)
+**Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  1 - Reads the value of Timer 1 (LPC_TIM1)
+**Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  2 - Reads the value of Timer 2 (LPC_TIM2)
+**Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  3 - Reads the value of Timer 3 (LPC_TIM3)
 **
-** Returned value:    The current value of the Timer Counter (TC) for the specified timer in seconds.
-**                    If an invalid timer number is passed, the function returns -1.
+** Returned value:Â  Â  The current value of the Timer Counter (TC) for the specified timer in seconds.
+**Â  Â  Â  Â  Â  Â  Â  Â  Â  Â  If an invalid timer number is passed, the function returns -1.
 **
-** Notes:            Ensure the specified timer is initialized and running before 
-**                   calling this function to get meaningful results.
+** Notes:Â  Â  Â  Â  Â  Â  Ensure the specified timer is initialized and running beforeÂ 
+**Â  Â  Â  Â  Â  Â  Â  Â  Â  Â calling this function to get meaningful results.
 **
-** Assumptions:      TIMER0_FREQ, TIMER1_FREQ, TIMER2_FREQ, and TIMER3_FREQ are 
-**                   defined constants representing the respective timer frequencies 
-**                   in Hz.
+** Assumptions:Â  Â  Â  TIMER0_FREQ, TIMER1_FREQ, TIMER2_FREQ, and TIMER3_FREQ are 
+**Â  Â  Â  Â  Â  Â  Â  Â  Â  Â defined constants representing the respective timer frequencies 
+**Â  Â  Â  Â  Â  Â  Â  Â  Â  Â in Hz.
 ******************************************************************************/
 float get_timer_value_in_sec(uint8_t timer_num) {
-    switch (timer_num) {
-        case 0:
-            return (float) (LPC_TIM0->TC) / TIMER0_FREQ;
-        case 1:
-            return (float) (LPC_TIM1->TC) / TIMER1_FREQ;
-        case 2:
-            return (float) (LPC_TIM2->TC) / TIMER2_FREQ;
-        case 3:
-            return (float) (LPC_TIM3->TC) / TIMER3_FREQ;
-        default:
-            return -1; 
-    }
+
+	switch (timer_num) {
+        	case 0:
+            		return (float) (LPC_TIM0->TC) / TIMER0_FREQ;
+        	case 1:
+            		return (float) (LPC_TIM1->TC) / TIMER1_FREQ;
+       	 	case 2:
+            		return (float) (LPC_TIM2->TC) / TIMER2_FREQ;
+        	case 3:
+            		return (float) (LPC_TIM3->TC) / TIMER3_FREQ;
+       	 	default:
+            		return -1; 
+    	}
 }
 /******************************************************************************
 ** Function name:    is_timer_enabled
