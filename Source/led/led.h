@@ -27,5 +27,5 @@ void LED_Out_Range(unsigned int value, unsigned char from_led_num, unsigned char
 #define D7 	4
 #define D8 	3
 #define D9 	2
-#define D10 1
-#define D11 0
+#define D10 	1
+#define D11 	0
