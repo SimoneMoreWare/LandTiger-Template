@@ -16,7 +16,7 @@
 
 //#include "../main/user_RIT.h"
 
-	/* Variabili Globali Gestione De-Bouncing */
+/* Variabili Globali Gestione De-Bouncing */
 	
 volatile int down_0 = 0;
 volatile int down_1 = 0;
@@ -66,7 +66,7 @@ void RIT_IRQHandler(void)
 			switch(down_0) {
 				case 2:				
 					// short press
-				  // your_code	
+				  	// your_code	
 					toRelease_down_0 = 1;
 					break;
 				case long_press_count_1:					
@@ -82,7 +82,7 @@ void RIT_IRQHandler(void)
 				toRelease_down_0=0;
 			}
 			down_0=0;			
-			NVIC_EnableIRQ(EINT0_IRQn);							 			 /* disable Button interrupts			*/
+			NVIC_EnableIRQ(EINT0_IRQn);					 /* disable Button interrupts		 */
 			LPC_PINCON->PINSEL4    |= (1 << 20);     			 /* External interrupt 0 pin selection   */
 		}
 	} 	// end INT0
@@ -113,7 +113,7 @@ void RIT_IRQHandler(void)
 				toRelease_down_1=0;
 			}			
 			down_1=0;	
-			NVIC_EnableIRQ(EINT1_IRQn);							 			 /* disable Button interrupts			*/
+			NVIC_EnableIRQ(EINT1_IRQn);					 /* disable Button interrupts	         */
 			LPC_PINCON->PINSEL4    |= (1 << 22);     			 /* External interrupt 0 pin selection   */
 		}
 	}	// end KEY1
@@ -144,160 +144,155 @@ void RIT_IRQHandler(void)
 				toRelease_down_2=0;
 			}	
 			down_2=0;		
+			NVIC_EnableIRQ(EINT2_IRQn);					 /* disable Button interrupts	        */
 			LPC_PINCON->PINSEL4    |= (1 << 24);     			 /* External interrupt 0 pin selection  */
 		}
 	}	// end KEY2
 	
 	///////////////////////////////////////////////////////////////////
 		
-		/*Joystick UP-LEFT*/
-		if(((LPC_GPIO1->FIOPIN & (1<<27)) == 0) && ((LPC_GPIO1->FIOPIN & (1<<29)) == 0)) {		/* Joystick UP-LEFT */
-			/* Joytick UP-LEFT pressed */
-			J_up_left++;
-			UP_LEFT_activated = 1;
-			switch(J_up_left){
-				case 1:				
-					//short press
-					//your code	
+	/*Joystick UP-LEFT*/
+	if(((LPC_GPIO1->FIOPIN & (1<<27)) == 0) && ((LPC_GPIO1->FIOPIN & (1<<29)) == 0)) {		/* Joystick UP-LEFT */
+		/* Joytick UP-LEFT pressed */
+		J_up_left++;
+		UP_LEFT_activated = 1;
+		switch(J_up_left){
+			case 1:				
+				//short press
+				//your code	
+							
+				//for just enabling up-left and not up-left + left + up without flags
+				//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+				//return;					
+				break;
+			case long_press_count_1:
+				// your code here (for long press)
 				
+				//for just enabling up-left and not up-left + left + up without flags
+				//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+				//return;	
+				break;
+			default:
+				// potential other code here
 				
-					//for just enabling up-left and not up-left + left + up without flags
-					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
-					//return;					
-					break;
-				case long_press_count_1:
-					// your code here (for long press)
-				
-					//for just enabling up-left and not up-left + left + up without flags
-					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
-					//return;	
-					break;
-				default:
-					// potential other code here
-				
-					//for just enabling up-left and not up-left + left + up without flags
-					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
-					//return;	
-					break;
-			}
+				//for just enabling up-left and not up-left + left + up without flags
+				//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+				//return;	
+				break;
 		}
-		else {
-			J_up_left=0;
-		}	// end Joystick UP-LEFT
+	}
+	else {
+		J_up_left=0;
+	}	// end Joystick UP-LEFT
 		
-		///////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////
 		
-		/*Joystick UP-RIGHT*/
-		if(((LPC_GPIO1->FIOPIN & (1<<28)) == 0) && ((LPC_GPIO1->FIOPIN & (1<<29)) == 0)) {		/* Joystick UP-RIGHT*/
-			/* Joytick UP-RIGHT pressed */
-			J_up_right++;
-			UP_RIGHT_activated = 1;
-			switch(J_up_right){
-				case 1:				
-					//short press
-					//your code	
+	/*Joystick UP-RIGHT*/
+	if(((LPC_GPIO1->FIOPIN & (1<<28)) == 0) && ((LPC_GPIO1->FIOPIN & (1<<29)) == 0)) {		/* Joystick UP-RIGHT*/
+		/* Joytick UP-RIGHT pressed */
+		J_up_right++;
+		UP_RIGHT_activated = 1;
+		switch(J_up_right){
+			case 1:				
+				//short press
+				//your code	
 				
-					//for just enabling up-right and not up-right + right + up without flags
-					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
-					//return;	
-					break;
-				case long_press_count_1:
-					// your code here (for long press)
+				//for just enabling up-right and not up-right + right + up without flags
+				//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+				//return;	
+				break;
+			case long_press_count_1:
+				// your code here (for long press)
 				
-					//for just enabling up-right and not up-right + right + up without flags
-					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
-					//return;	
-					break;
-				default:
-					// J_uppotential other code here
+				//for just enabling up-right and not up-right + right + up without flags
+				//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+				//return;	
+				break;
+			default:
+				// J_uppotential other code here
 				
-					//for just enabling up-right and not up-right + right + up without flags
-					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
-					//return;	
-					break;
-			}
+				//for just enabling up-right and not up-right + right + up without flags
+				//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+				//return;	
+				break;
 		}
-		else {
-			J_up_right=0;
-		}	// end Joystick UP-RIGHT
+	}
+	else {
+		J_up_right=0;
+	}	// end Joystick UP-RIGHT
 		
-		///////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////
 		
-		/*Joystick DOWN-LEFT*/
-		if(((LPC_GPIO1->FIOPIN & (1<<27)) == 0) && ((LPC_GPIO1->FIOPIN & (1<<26)) == 0)) {		/* Joystick DOWN-LEFT */
-			/* Joytick DOWN-LEFT pressed */
-			J_down_left++;
-			DOWN_LEFT_activated = 0;
-			switch(J_down_left){
-				case 1:				
-					//short press
-					//your code	
+	/*Joystick DOWN-LEFT*/
+	if(((LPC_GPIO1->FIOPIN & (1<<27)) == 0) && ((LPC_GPIO1->FIOPIN & (1<<26)) == 0)) {		/* Joystick DOWN-LEFT */
+		/* Joytick DOWN-LEFT pressed */
+		J_down_left++;
+		DOWN_LEFT_activated = 0;
+		switch(J_down_left){
+			case 1:				
+				//short press
+				//your code	
+										
+				//for just enabling down-left and not down-left + down + left without flags
+				//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+				//return;	
+				break;
+			case long_press_count_1:
+				// your code here (for long press)
 				
-				
-				
-					//for just enabling down-left and not down-left + down + left without flags
-					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
-					//return;	
-					break;
-				case long_press_count_1:
-					// your code here (for long press)
-				
-					//for just enabling down-left and not down-left + down + left without flags
-					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
-					//return;
-					break;
-				default:
-					// potential other code here
-				
-				
-					//for just enabling down-left and not down-left + down + left without flags
-					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
-					//return;
-					break;
-			}
+				//for just enabling down-left and not down-left + down + left without flags
+				//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+				//return;
+				break;
+			default:
+				// potential other code here
+								
+				//for just enabling down-left and not down-left + down + left without flags
+				//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+				//return;
+				break;
 		}
-		else {
-			J_down_left=0;
-		}	// end Joystick DOWN-LEFT
+	}
+	else {
+		J_down_left=0;
+	}	// end Joystick DOWN-LEFT
 		
-		///////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////
 		
-		/*Joystick DOWN-RIGHT*/
-		if(((LPC_GPIO1->FIOPIN & (1<<26)) == 0) && ((LPC_GPIO1->FIOPIN & (1<<28)) == 0)) {		/* Joystick DOWN-RIGHT */
-			/* Joytick DOWN-RIGHT pressed */
-			J_down_right++;
-			DOWN_RIGHT_activated = 0;
-			switch(J_down_right){
-				case 1:				
-					//short press
-					//your code	
+	/*Joystick DOWN-RIGHT*/
+	if(((LPC_GPIO1->FIOPIN & (1<<26)) == 0) && ((LPC_GPIO1->FIOPIN & (1<<28)) == 0)) {		/* Joystick DOWN-RIGHT */
+		/* Joytick DOWN-RIGHT pressed */
+		J_down_right++;
+		DOWN_RIGHT_activated = 0;
+		switch(J_down_right){
+			case 1:				
+				//short press
+				//your code	
+				
+				//for just enabling down-right and not down-left + down + right without flags
+				//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+				//return;
+				break;
+			case long_press_count_1:
+				// your code here (for long press)
+					
+				//for just enabling down-right and not down-left + down + right without flags
+				//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+				//return;
+				break;
+			default:
+				// potential other code here
 				
 				
-					//for just enabling down-right and not down-left + down + right without flags
-					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
-					//return;
-					break;
-				case long_press_count_1:
-					// your code here (for long press)
-				
-				
-					//for just enabling down-right and not down-left + down + right without flags
-					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
-					//return;
-					break;
-				default:
-					// potential other code here
-				
-				
-					//for just enabling down-right and not down-left + down + right without flags
-					//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
-					//return;
-					break;
-			}
+				//for just enabling down-right and not down-left + down + right without flags
+				//LPC_RIT->RICTRL |= 0x1;	/* clear interrupt flag */
+				//return;
+				break;
 		}
-		else {
-			J_down_right=0;
-		}	// end Joystick DOWN-RIGHT
+	}
+	else {
+		J_down_right=0;
+	}	// end Joystick DOWN-RIGHT
 	
 	///////////////////////////////////////////////////////////////////
 	
