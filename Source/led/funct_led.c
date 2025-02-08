@@ -52,17 +52,16 @@ void LED_Out(unsigned int value) {
   Function that outputs value to LEDs in reverse order
 *----------------------------------------------------------------------------*/
 void LED_Out_reverse(unsigned int value) {
-	int i;
-
-  	for (i = LED_NUM; i >= 0; i--) {
-    		if (value & (1<<i)) {
-      			LED_On (LED_NUM-i-1);
-    		} else {
-      			LED_Off(i);
-    		}
-  	}
-	
-	led_value = value;
+    int i;
+    int j;
+    for (i = LED_NUM-1, j=0  ; i>=0 ; i--,j++) {
+        if (value & (1<<j)) {
+          LED_On (i);
+        } else {
+          LED_Off(i);
+        }
+    }
+    led_value = value;
 }
 
 /*----------------------------------------------------------------------------
