@@ -463,9 +463,9 @@ The assembly code you provided contains several functions written in ARM assembl
 
 6. **`count_bit1`**: This function counts the number of `1` bits in a given integer. It shifts the integer left, checks for a carry (`ADDCS`), and decrements the bit count until all bits are processed.
 
-7. **`get_max`**: This function finds the maximum value in an array of integers. It loads the first element as the initial maximum and then iterates over the array, updating the maximum value whenever a larger element is found.
+7. **`get_max`**: This function finds the maximum value in an array of integers. It loads the first element as the initial maximum and then iterates over the array, updating the maximum value and its index whenever a larger element is found.
 
-8. **`get_min`**: Similar to `get_max`, this function finds the minimum value in an array of integers. It starts with the first element as the minimum and iterates over the array, updating the minimum whenever a smaller element is found.
+8. **`get_min`**: Similar to `get_max`, this function finds the minimum value in an array of integers. It starts with the first element as the minimum and iterates over the array, updating the minimum and its index whenever a smaller element is found.
 
 9. **`is_monotonic_increasing`**: This function checks whether a given array of integers is monotonically increasing. It compares each element of the array with the next one and returns 1 (true) if the array is monotonically increasing, otherwise it returns 0 (false).
 
